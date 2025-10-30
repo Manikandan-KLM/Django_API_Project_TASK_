@@ -16,7 +16,12 @@ from django.urls import reverse
 
 from django.utils.http import urlsafe_base64_decode
 
+#Reservatins.....
 
+from .models import Reservation, FolioItem
+
+#Folio............
+from .models import Folio,FolioItem
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -109,11 +114,28 @@ class ResetPasswordSerializer(serializers.Serializer):
 
 
 
+#Reservations......................................................................................................................
+
+class ReservationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reservation
+        fields = '__all__'
+        read_only_fields = ['reservation', 'reservation_date']
 
 
+#Folio.................................................................................................................
 
+class FolioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Folio
+        fields = '__all__'
 
+#Folio Add Items.......................................................................................................
 
+class FolioItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FolioItem
+        fields = '__all__'
 
 
 
